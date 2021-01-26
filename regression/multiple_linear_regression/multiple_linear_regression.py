@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
 
 dataset = pd.read_csv('50_startups.csv')
 x = dataset.iloc[:, 0:-1].values
@@ -21,6 +22,10 @@ lr.fit(x_train, y_train)
 
 pred = lr.predict(x_test)
 error = y_test - pred
+
+# evaluate the model
+r2 = r2_score(y, reg.predict(x))
+print('R^2 score of the model:', r2)
 
 
 

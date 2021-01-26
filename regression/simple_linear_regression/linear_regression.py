@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
 
 dataset = pd.read_csv('salary_data.csv')
 x = dataset.iloc[:, 0:1].values
@@ -25,9 +26,8 @@ plt.xlabel('Years of experience')
 plt.ylabel('Salary')
 plt.show()
 
-plt.scatter(x_test, y_test, color='r')
-plt.plot(x_test, lr.predict(x_test), color='b')
-plt.title('Salary vs Experience (Test set)')
-plt.xlabel('Years of experience')
-plt.ylabel('Salary')
-plt.show()
+
+# evaluate the model
+r2 = r2_score(y_test, lr.predict(x_test))
+print('R^2 score of the model:', r2)
+
