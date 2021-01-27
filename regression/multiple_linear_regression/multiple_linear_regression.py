@@ -24,7 +24,7 @@ pred = lr.predict(x_test)
 error = y_test - pred
 
 # evaluate the model
-r2 = r2_score(y, reg.predict(x))
+r2 = r2_score(y, lr.predict(x))
 print('R^2 score of the model:', r2)
 
 
